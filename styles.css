@@ -40,6 +40,19 @@ body {
     overflow-x: hidden;
 }
 
+/* Remove underlines from all links */
+a {
+    text-decoration: none !important;
+    color: inherit;
+}
+
+a:hover,
+a:focus,
+a:active,
+a:visited {
+    text-decoration: none !important;
+}
+
 /* Theme Toggle */
 .theme-toggle {
     position: fixed;
@@ -298,7 +311,6 @@ body {
     padding: 1.5rem;
     background-color: var(--card-bg);
     border-radius: 20px;
-    text-decoration: none;
     color: inherit;
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     border: 1px solid var(--border-color);
@@ -376,7 +388,19 @@ body {
     z-index: 1000;
     box-shadow: 0 8px 32px var(--shadow);
     max-width: 90vw;
-    overflow-x: auto;
+    overflow: hidden;
+    transition: background 1.0s cubic-bezier(0.19, 1, 0.22, 1),
+                border-color 1.0s cubic-bezier(0.19, 1, 0.22, 1),
+                backdrop-filter 1.0s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.dock::-webkit-scrollbar {
+    display: none;
+}
+
+.dock {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .dock-item {
@@ -386,23 +410,35 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: 12px;
-    text-decoration: none;
     font-size: 1rem;
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
     color: var(--text-primary);
     flex-shrink: 0;
+    text-decoration: none !important;
+    border: none !important;
+    outline: none !important;
+}
+
+.dock-item:hover,
+.dock-item:focus,
+.dock-item:active,
+.dock-item:visited {
+    text-decoration: none !important;
 }
 
 .dock-item:hover {
     background-color: var(--card-bg);
     transform: translateY(-2px) scale(1.05);
-    text-decoration: none;
+    text-decoration: none !important;
+    border: none !important;
+    border-bottom: none !important;
+    outline: none !important;
 }
 
 .dock-item:focus {
     outline: none;
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 .dock-item svg {
@@ -936,7 +972,6 @@ html {
 .project-link {
     padding: 0.5rem 1rem;
     border-radius: 12px;
-    text-decoration: none;
     font-size: 0.875rem;
     font-weight: 500;
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -1442,12 +1477,6 @@ html {
     transition: color 1.2s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.dock {
-    transition: background 1.0s cubic-bezier(0.19, 1, 0.22, 1),
-                border-color 1.0s cubic-bezier(0.19, 1, 0.22, 1),
-                backdrop-filter 1.0s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
 .modal-content {
     transition: background-color 1.0s cubic-bezier(0.19, 1, 0.22, 1),
                 border-color 1.0s cubic-bezier(0.19, 1, 0.22, 1);
@@ -1512,11 +1541,6 @@ html {
 /* Buttery smooth easing curves */
 .ultra-smooth {
     transition: all 1.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Dock smooth transition */
-.dock-item {
-    transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 /* Avatar and hero elements */
@@ -1662,7 +1686,6 @@ html {
     padding: 1rem 2rem;
     background-color: var(--card-bg);
     color: var(--text-primary);
-    text-decoration: none;
     border-radius: 16px;
     font-weight: 600;
     border: 1px solid var(--border-color);
@@ -1815,3 +1838,49 @@ html {
         font-size: 1.1rem;
     }
 }
+
+
+/* Force remove all underlines from dock items - Override browser defaults */
+.dock a,
+.dock a:link,
+.dock a:visited,
+.dock a:hover,
+.dock a:focus,
+.dock a:active,
+a.dock-item,
+a.dock-item:link,
+a.dock-item:visited,
+a.dock-item:hover,
+a.dock-item:focus,
+a.dock-item:active {
+    text-decoration: none !important;
+    text-decoration-line: none !important;
+    text-decoration-style: none !important;
+    text-decoration-color: transparent !important;
+    text-decoration-thickness: 0 !important;
+    -webkit-text-decoration: none !important;
+    -moz-text-decoration: none !important;
+    border-bottom: none !important;
+    border-bottom-width: 0 !important;
+    border-bottom-style: none !important;
+    border-bottom-color: transparent !important;
+    box-shadow: none !important;
+    text-underline-offset: 0 !important;
+    text-underline-position: unset !important;
+}
+
+/* Remove any pseudo-elements that might create lines */
+.dock-item::before,
+.dock-item::after {
+    border-bottom: none !important;
+}
+
+/* Specifically target SVG to ensure no underlines */
+.dock-item svg,
+.dock-item:hover svg,
+.dock-item:focus svg,
+.dock-item:active svg {
+    text-decoration: none !important;
+    border-bottom: none !important;
+}
+
