@@ -38,6 +38,19 @@ body {
     transition: background-color 1.2s cubic-bezier(0.19, 1, 0.22, 1), 
                 color 1.2s cubic-bezier(0.19, 1, 0.22, 1);
     overflow-x: hidden;
+    position: relative;
+}
+
+/* Particle Canvas Background */
+#particleCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.6;
 }
 
 /* Remove underlines from all links */
@@ -100,6 +113,8 @@ a:visited {
     margin: 0 auto;
     padding: 2rem;
     padding-bottom: 100px;
+    position: relative;
+    z-index: 1;
 }
 
 /* Hero Section */
