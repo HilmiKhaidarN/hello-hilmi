@@ -394,14 +394,21 @@ body {
     flex-shrink: 0;
 }
 
-.dock-item svg {
-    width: 18px;
-    height: 18px;
-}
-
 .dock-item:hover {
     background-color: var(--card-bg);
     transform: translateY(-2px) scale(1.05);
+    text-decoration: none;
+}
+
+.dock-item:focus {
+    outline: none;
+    text-decoration: none;
+}
+
+.dock-item svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2;
 }
 
 .dock-item::after {
@@ -480,8 +487,8 @@ body {
     }
     
     .dock-item svg {
-        width: 16px;
-        height: 16px;
+        width: 18px;
+        height: 18px;
     }
 }
 
