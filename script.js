@@ -968,3 +968,269 @@ document.addEventListener('keydown', (event) => {
         }
     }
 });
+
+
+// Blog Articles Data
+const articlesData = {
+    'getting-started-react': {
+        title: 'Getting Started with React: A Beginner\'s Guide',
+        date: '14 Jan 2026',
+        readTime: '5 min read',
+        content: `
+            <h3>Introduction</h3>
+            <p>React has become one of the most popular JavaScript libraries for building user interfaces. In this guide, I'll walk you through the fundamentals of React and help you build your first interactive web application.</p>
+            
+            <h3>What is React?</h3>
+            <p>React is a JavaScript library developed by Facebook for building user interfaces, particularly single-page applications. It allows developers to create reusable UI components that manage their own state.</p>
+            
+            <h3>Key Concepts</h3>
+            <p><strong>Components:</strong> The building blocks of React applications. Components are reusable pieces of UI that can be composed together.</p>
+            
+            <p><strong>Props:</strong> Short for properties, props are how you pass data from parent to child components.</p>
+            
+            <p><strong>State:</strong> State is data that changes over time. When state changes, React re-renders the component.</p>
+            
+            <h3>Your First Component</h3>
+            <pre><code>function Welcome(props) {
+  return &lt;h1&gt;Hello, {props.name}!&lt;/h1&gt;;
+}
+
+// Usage
+&lt;Welcome name="Hilmi" /&gt;</code></pre>
+            
+            <h3>Using Hooks</h3>
+            <p>Hooks are functions that let you use state and other React features in functional components:</p>
+            
+            <pre><code>import { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+  
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Count: {count}&lt;/p&gt;
+      &lt;button onClick={() => setCount(count + 1)}&gt;
+        Increment
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+            
+            <h3>Conclusion</h3>
+            <p>React is a powerful tool for building modern web applications. Start with these basics, practice building small projects, and gradually explore more advanced concepts like context, reducers, and custom hooks.</p>
+            
+            <p>Happy coding! 🚀</p>
+        `
+    },
+    'portfolio-journey': {
+        title: 'Building My Portfolio: Design & Development Journey',
+        date: '10 Jan 2026',
+        readTime: '8 min read',
+        content: `
+            <h3>The Beginning</h3>
+            <p>Creating a portfolio website is more than just showcasing your work—it's about telling your story. Here's how I approached building this portfolio from scratch.</p>
+            
+            <h3>Design Philosophy</h3>
+            <p>I wanted a clean, modern design that puts content first. Key design decisions included:</p>
+            <ul>
+                <li>Minimalist color scheme with dark mode support</li>
+                <li>Smooth animations and transitions</li>
+                <li>Mobile-first responsive design</li>
+                <li>Accessible and user-friendly navigation</li>
+            </ul>
+            
+            <h3>Technology Stack</h3>
+            <p>I kept it simple and performant:</p>
+            <ul>
+                <li><strong>HTML5:</strong> Semantic markup for better SEO</li>
+                <li><strong>CSS3:</strong> Custom properties for theming, Grid and Flexbox for layout</li>
+                <li><strong>Vanilla JavaScript:</strong> No frameworks needed for this project</li>
+            </ul>
+            
+            <h3>Key Features</h3>
+            <p><strong>Dark Mode Toggle:</strong> Implemented with CSS custom properties and localStorage for persistence.</p>
+            
+            <pre><code>function setTheme(theme) {
+  if (theme === 'dark') {
+    document.body.setAttribute('data-theme', 'dark');
+  } else {
+    document.body.removeAttribute('data-theme');
+  }
+  localStorage.setItem('theme', theme);
+}</code></pre>
+            
+            <p><strong>Smooth Animations:</strong> Used Intersection Observer API for scroll-triggered animations.</p>
+            
+            <h3>Challenges & Solutions</h3>
+            <p>One challenge was creating smooth theme transitions. I solved this by using CSS transitions on all color properties and adding a ripple effect for visual feedback.</p>
+            
+            <h3>Lessons Learned</h3>
+            <ul>
+                <li>Keep it simple—you don't always need a framework</li>
+                <li>Performance matters—optimize images and minimize JavaScript</li>
+                <li>Accessibility is crucial—test with screen readers</li>
+                <li>Mobile-first approach saves time in the long run</li>
+            </ul>
+            
+            <h3>What's Next?</h3>
+            <p>I plan to add a blog section (which you're reading now!), integrate with GitHub API for live project stats, and add more interactive elements.</p>
+            
+            <p>Thanks for reading! Feel free to check out the source code on my GitHub. 💻</p>
+        `
+    },
+    'docker-basics': {
+        title: 'Docker Basics: Containerizing Your First Application',
+        date: '5 Jan 2026',
+        readTime: '10 min read',
+        content: `
+            <h3>Why Docker?</h3>
+            <p>Docker has revolutionized how we develop, ship, and run applications. It solves the classic "it works on my machine" problem by packaging applications with all their dependencies.</p>
+            
+            <h3>What is Docker?</h3>
+            <p>Docker is a platform that uses containerization to package applications and their dependencies together. Containers are lightweight, portable, and consistent across different environments.</p>
+            
+            <h3>Key Concepts</h3>
+            <p><strong>Images:</strong> Read-only templates used to create containers. Think of them as blueprints.</p>
+            
+            <p><strong>Containers:</strong> Running instances of images. They're isolated environments where your application runs.</p>
+            
+            <p><strong>Dockerfile:</strong> A text file with instructions to build a Docker image.</p>
+            
+            <h3>Your First Dockerfile</h3>
+            <p>Let's containerize a simple Node.js application:</p>
+            
+            <pre><code># Use official Node.js image
+FROM node:18-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy application code
+COPY . .
+
+# Expose port
+EXPOSE 3000
+
+# Start application
+CMD ["npm", "start"]</code></pre>
+            
+            <h3>Building and Running</h3>
+            <p>Build your image:</p>
+            <pre><code>docker build -t my-app .</code></pre>
+            
+            <p>Run your container:</p>
+            <pre><code>docker run -p 3000:3000 my-app</code></pre>
+            
+            <h3>Docker Compose</h3>
+            <p>For multi-container applications, use Docker Compose:</p>
+            
+            <pre><code>version: '3.8'
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_PASSWORD: secret</code></pre>
+            
+            <h3>Best Practices</h3>
+            <ul>
+                <li>Use official base images</li>
+                <li>Keep images small—use alpine variants</li>
+                <li>Leverage layer caching—order Dockerfile commands wisely</li>
+                <li>Don't run containers as root</li>
+                <li>Use .dockerignore to exclude unnecessary files</li>
+            </ul>
+            
+            <h3>Common Commands</h3>
+            <pre><code># List running containers
+docker ps
+
+# Stop a container
+docker stop &lt;container-id&gt;
+
+# Remove a container
+docker rm &lt;container-id&gt;
+
+# View logs
+docker logs &lt;container-id&gt;
+
+# Execute command in container
+docker exec -it &lt;container-id&gt; sh</code></pre>
+            
+            <h3>Conclusion</h3>
+            <p>Docker is an essential tool for modern development. Start with simple applications, practice building images, and gradually explore more advanced topics like multi-stage builds and orchestration.</p>
+            
+            <p>Happy containerizing! 🐳</p>
+        `
+    }
+};
+
+// Open Article Modal
+function openArticle(articleId) {
+    const article = articlesData[articleId];
+    if (!article) return;
+    
+    // Create modal if it doesn't exist
+    let modal = document.getElementById('articleModal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'articleModal';
+        modal.className = 'article-modal';
+        modal.innerHTML = `
+            <div class="article-content">
+                <div class="article-header">
+                    <h2 id="articleTitle"></h2>
+                    <div class="article-meta">
+                        <span id="articleDate"></span>
+                        <span id="articleReadTime"></span>
+                    </div>
+                    <span class="close" onclick="closeArticle()" style="position: absolute; top: 2rem; right: 2rem; cursor: pointer; font-size: 2rem; color: var(--text-secondary);">&times;</span>
+                </div>
+                <div class="article-body" id="articleBody"></div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        
+        // Close on outside click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeArticle();
+            }
+        });
+    }
+    
+    // Populate content
+    document.getElementById('articleTitle').textContent = article.title;
+    document.getElementById('articleDate').textContent = '📅 ' + article.date;
+    document.getElementById('articleReadTime').textContent = '⏱️ ' + article.readTime;
+    document.getElementById('articleBody').innerHTML = article.content;
+    
+    // Show modal
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+// Close Article Modal
+function closeArticle() {
+    const modal = document.getElementById('articleModal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// Close article on Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeArticle();
+    }
+});
