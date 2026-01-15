@@ -297,11 +297,12 @@ body {
     align-items: center;
     padding: 1.5rem;
     background-color: var(--card-bg);
-    border-radius: 24px;
+    border-radius: 20px;
     text-decoration: none;
     color: inherit;
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     border: 1px solid var(--border-color);
+    min-height: 80px;
 }
 
 .contact-item:hover {
@@ -312,42 +313,50 @@ body {
 .contact-icon {
     font-size: 1.5rem;
     margin-right: 1rem;
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: var(--bg-secondary);
-    border-radius: 12px;
+    border-radius: 16px;
     color: var(--text-primary);
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    flex-shrink: 0;
 }
 
 .contact-item:hover .contact-icon {
     background-color: var(--text-primary);
     color: var(--bg-primary);
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .contact-icon svg {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
 }
 
 .contact-info {
     display: flex;
     flex-direction: column;
+    flex: 1;
+    min-width: 0;
 }
 
 .contact-label {
     font-size: 0.875rem;
     color: var(--text-secondary);
-    font-weight: 500;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .contact-value {
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 500;
+    color: var(--text-primary);
+    word-break: break-all;
 }
 
 /* Floating Dock */
@@ -438,6 +447,22 @@ body {
         grid-template-columns: 1fr;
     }
     
+    .contact-item {
+        padding: 1.25rem;
+        min-height: 70px;
+    }
+    
+    .contact-icon {
+        width: 44px;
+        height: 44px;
+        margin-right: 0.875rem;
+    }
+    
+    .contact-icon svg {
+        width: 22px;
+        height: 22px;
+    }
+    
     .theme-toggle {
         top: 1rem;
         right: 1rem;
@@ -475,6 +500,26 @@ body {
     
     .project-card {
         padding: 1.5rem;
+    }
+    
+    .contact-item {
+        padding: 1rem;
+        min-height: 60px;
+    }
+    
+    .contact-icon {
+        width: 40px;
+        height: 40px;
+        margin-right: 0.75rem;
+    }
+    
+    .contact-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .contact-value {
+        font-size: 0.9rem;
     }
 }
 
