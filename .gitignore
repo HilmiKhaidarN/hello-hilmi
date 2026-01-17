@@ -1,0 +1,26 @@
+# Video files (too large for git)
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# Large media files
+.PROJECT/Mobile Applications/Quran/AlQuran.mp4
+
+# Node modules
+node_modules/
+
+# Build files
+dist/
+build/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

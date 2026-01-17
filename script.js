@@ -570,23 +570,39 @@ const projectData = {
         title: "Mobile Applications",
         projects: [
             {
-                title: "Expense Tracker",
-                description: "Personal finance management app with charts and analytics",
-                tech: ["React Native", "SQLite"],
+                title: "Al-Quran Digital",
+                description: "Digital Quran reader with audio, bookmarks, prayer times & adhan notifications. Web + Android hybrid app built with Capacitor.",
+                tech: ["JavaScript", "HTML/CSS", "Capacitor", "Android", "SQLite", "PWA", "Geolocation", "Audio API"],
+                demo: "https://github.com/HilmiKhaidarN/alquran-digital-app/releases/download/v1.0.0/demo-video.mp4",
+                code: "https://github.com/HilmiKhaidarN/alquran-digital-app",
+                download: "https://github.com/HilmiKhaidarN/alquran-digital-app/releases/latest/download/alquran-digital.apk",
+                hasVideo: true
+            },
+            {
+                title: "E-Commerce App",
+                description: "Platform belanja online dengan fitur keranjang, pembayaran, dan tracking pesanan",
+                tech: ["React Native", "Redux", "Firebase"],
                 demo: "#",
                 code: "#"
             },
             {
-                title: "News Reader App",
-                description: "News aggregation app with offline reading capability",
-                tech: ["Flutter", "Dart", "API"],
+                title: "Weather App",
+                description: "Aplikasi cuaca dengan prediksi 7 hari dan notifikasi cuaca ekstrem",
+                tech: ["Flutter", "OpenWeather API", "Bloc"],
                 demo: "#",
                 code: "#"
             },
             {
-                title: "Fitness Tracker",
-                description: "Health and fitness tracking app with workout plans",
-                tech: ["React Native", "Firebase"],
+                title: "Task Manager",
+                description: "Aplikasi manajemen tugas dengan kolaborasi tim dan tracking waktu",
+                tech: ["React Native", "Zustand", "SQLite"],
+                demo: "#",
+                code: "#"
+            },
+            {
+                title: "Food Delivery",
+                description: "Aplikasi delivery makanan dengan tracking real-time dan multiple payment",
+                tech: ["Flutter", "Google Maps", "Stripe"],
                 demo: "#",
                 code: "#"
             }
@@ -989,19 +1005,32 @@ function openProjectModal(category) {
                     ${project.tech.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
                 </div>
                 <div class="modal-project-links">
-                    ${project.demo !== '#' ? `<a href="${project.demo}" class="project-link demo" target="_blank">
+                    ${project.hasVideo ? `<button class="project-link demo" onclick="openVideoModal('${project.demo}', '${project.title}')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="5,3 19,12 5,21"/>
+                        </svg>
+                        Lihat Project
+                    </button>` : project.demo !== '#' ? `<a href="${project.demo}" class="project-link demo" target="_blank">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
                             <polyline points="15,3 21,3 21,9"/>
                             <line x1="10" y1="14" x2="21" y2="3"/>
                         </svg>
-                        Live Demo
+                        Lihat Project
                     </a>` : ''}
                     ${project.code !== '#' ? `<a href="${project.code}" class="project-link code" target="_blank">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
                         </svg>
-                        View Code
+                        Lihat Code
+                    </a>` : ''}
+                    ${project.download ? `<a href="${project.download}" class="project-link download" target="_blank">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7,10 12,15 17,10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        Download
                     </a>` : ''}
                 </div>
             `;
@@ -1369,5 +1398,71 @@ function closeArticle() {
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         closeArticle();
+    }
+});
+
+// Video Modal Management
+function openVideoModal(videoPath, projectTitle) {
+    // Create video modal if it doesn't exist
+    let videoModal = document.getElementById('videoModal');
+    if (!videoModal) {
+        videoModal = document.createElement('div');
+        videoModal.id = 'videoModal';
+        videoModal.className = 'video-modal';
+        videoModal.innerHTML = `
+            <div class="video-modal-content">
+                <div class="video-modal-header">
+                    <h2 id="videoModalTitle"></h2>
+                    <span class="close" onclick="closeVideoModal()">&times;</span>
+                </div>
+                <div class="video-container">
+                    <video id="projectVideo" controls preload="metadata">
+                        <source id="videoSource" type="video/mp4">
+                        Browser Anda tidak mendukung video HTML5.
+                    </video>
+                </div>
+                <div class="video-modal-footer">
+                    <p class="video-description">Demo aplikasi Al-Quran Digital dengan fitur lengkap</p>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(videoModal);
+        
+        // Close on outside click
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) {
+                closeVideoModal();
+            }
+        });
+    }
+    
+    // Set video source and title
+    document.getElementById('videoModalTitle').textContent = projectTitle;
+    document.getElementById('videoSource').src = videoPath;
+    document.getElementById('projectVideo').load(); // Reload video with new source
+    
+    // Show modal
+    videoModal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeVideoModal() {
+    const videoModal = document.getElementById('videoModal');
+    if (videoModal) {
+        const video = document.getElementById('projectVideo');
+        video.pause(); // Pause video when closing modal
+        video.currentTime = 0; // Reset video to beginning
+        videoModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// Close video modal on Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        const videoModal = document.getElementById('videoModal');
+        if (videoModal && videoModal.style.display === 'block') {
+            closeVideoModal();
+        }
     }
 });
