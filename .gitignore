@@ -1,11 +1,16 @@
-# Video files (too large for git)
-*.mp4
+# Video files (too large for git - but allow specific ones)
+# *.mp4 - commented out to allow AlQuran.mp4
 *.avi
 *.mov
 *.mkv
 
-# Large media files
-.PROJECT/Mobile Applications/Quran/AlQuran.mp4
+# Large media files (commented out to allow local access)
+# .PROJECT/Mobile Applications/Quran/AlQuran.mp4
+
+# APK files (except specific ones we want to keep)
+# *.apk - commented out to allow quran.apk
+*.ipa
+*.aab
 
 # Node modules
 node_modules/

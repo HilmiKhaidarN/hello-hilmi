@@ -573,9 +573,9 @@ const projectData = {
                 title: "Al-Quran Digital",
                 description: "Digital Quran reader with audio, bookmarks, prayer times & adhan notifications. Web + Android hybrid app built with Capacitor.",
                 tech: ["JavaScript", "HTML/CSS", "Capacitor", "Android", "SQLite", "PWA", "Geolocation", "Audio API"],
-                demo: "https://github.com/HilmiKhaidarN/alquran-digital-app/releases/download/v1.0.0/demo-video.mp4",
+                demo: ".PROJECT/Mobile Applications/Quran/AlQuran.mp4",
                 code: "https://github.com/HilmiKhaidarN/alquran-digital-app",
-                download: "https://github.com/HilmiKhaidarN/alquran-digital-app/releases/latest/download/alquran-digital.apk",
+                download: ".PROJECT/Mobile Applications/Quran/quran.apk",
                 hasVideo: true
             },
             {
