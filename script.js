@@ -533,8 +533,16 @@ const projectData = {
                 title: "Portfolio Website",
                 description: "Personal portfolio website with modern design and dark mode support",
                 tech: ["HTML", "CSS", "JavaScript"],
-                demo: "https://hi-hilmi.github.io/hi-im-hilmi/",
-                code: "https://github.com/hi-hilmi/hi-im-hilmi"
+                demo: "https://hilmikhaidarn.github.io/hello-hilmi/",
+                code: "https://github.com/HilmiKhaidarN/hello-hilmi"
+            },
+            {
+                title: "PangkasHub",
+                description: "Modern web application for barbershop booking system that makes it easy for customers to make appointments and helps administrators manage schedules efficiently.",
+                tech: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
+                demo: ".PROJECT/Web Projects/PangkasHub/PangkasHub.mp4",
+                code: "https://github.com/HilmiKhaidarN/Web-Project-PangkasHub",
+                hasVideo: true
             },
             {
                 title: "E-Commerce Landing Page",
