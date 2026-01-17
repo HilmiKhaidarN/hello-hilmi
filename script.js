@@ -553,10 +553,11 @@ const projectData = {
             },
             {
                 title: "Weather App",
-                description: "Real-time weather application with location-based forecasts",
-                tech: ["JavaScript", "API", "CSS"],
-                demo: "#",
-                code: "#"
+                description: "Modern and responsive weather application built using React.js, Vite and Tailwind CSS with an elegant monochrome design. Provides comprehensive real-time weather information including current weather conditions, daily and weekly forecasts, air quality (AQI), and interactive weather radar with multiple satellite layers.",
+                tech: ["React", "JavaScript", "Tailwind CSS", "Vite", "Weather API"],
+                demo: ".PROJECT/Web Projects/Weather-App/WeatherApp.mp4",
+                code: "https://github.com/HilmiKhaidarN/WeatherApp",
+                hasVideo: true
             },
             {
                 title: "Todo List App",
@@ -1430,7 +1431,7 @@ function openVideoModal(videoPath, projectTitle) {
                     </video>
                 </div>
                 <div class="video-modal-footer">
-                    <p class="video-description">Demo aplikasi Al-Quran Digital dengan fitur lengkap</p>
+                    <p class="video-description" id="videoDescription"></p>
                 </div>
             </div>
         `;
@@ -1448,6 +1449,18 @@ function openVideoModal(videoPath, projectTitle) {
     document.getElementById('videoModalTitle').textContent = projectTitle;
     document.getElementById('videoSource').src = videoPath;
     document.getElementById('projectVideo').load(); // Reload video with new source
+    
+    // Set dynamic description based on project
+    const videoDescription = document.getElementById('videoDescription');
+    if (projectTitle.includes('Al-Quran')) {
+        videoDescription.textContent = 'Demo aplikasi Al-Quran Digital dengan fitur lengkap';
+    } else if (projectTitle.includes('Weather')) {
+        videoDescription.textContent = 'Demo aplikasi Weather App dengan interface modern dan fitur cuaca lengkap';
+    } else if (projectTitle.includes('PangkasHub')) {
+        videoDescription.textContent = 'Demo aplikasi PangkasHub - sistem booking barbershop modern';
+    } else {
+        videoDescription.textContent = `Demo aplikasi ${projectTitle}`;
+    }
     
     // Show modal
     videoModal.style.display = 'block';
