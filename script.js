@@ -545,11 +545,12 @@ const projectData = {
                 hasVideo: true
             },
             {
-                title: "E-Commerce Landing Page",
-                description: "Responsive landing page for online store with product showcase",
-                tech: ["HTML", "CSS", "Bootstrap"],
-                demo: "#",
-                code: "#"
+                title: "Perpustakaan Digital",
+                description: "Modern Digital Library Application yang dibangun menggunakan HTML5, CSS3, dan JavaScript murni tanpa framework untuk memberikan pengalaman perpustakaan yang lengkap dan profesional.",
+                tech: ["HTML", "CSS", "JavaScript", "Local Storage", "Responsive Design"],
+                demo: ".PROJECT/Web Projects/Perpustakaan/Perpustakaan.mp4",
+                code: "https://github.com/HilmiKhaidarN/PerpustakaanDigital",
+                hasVideo: true
             },
             {
                 title: "Weather App",
@@ -1458,6 +1459,8 @@ function openVideoModal(videoPath, projectTitle) {
         videoDescription.textContent = 'Demo aplikasi Weather App dengan interface modern dan fitur cuaca lengkap';
     } else if (projectTitle.includes('PangkasHub')) {
         videoDescription.textContent = 'Demo aplikasi PangkasHub - sistem booking barbershop modern';
+    } else if (projectTitle.includes('Perpustakaan')) {
+        videoDescription.textContent = 'Demo aplikasi Perpustakaan Digital - sistem manajemen perpustakaan modern';
     } else {
         videoDescription.textContent = `Demo aplikasi ${projectTitle}`;
     }
