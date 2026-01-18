@@ -568,12 +568,13 @@ const projectData = {
                 code: "#"
             },
             {
-                title: "Restaurant Website",
-                description: "Modern restaurant website with menu and reservation system",
-                tech: ["HTML", "CSS", "JavaScript"],
-                demo: "#",
-                code: "#"
-            }
+                title: "Restoran Modern",
+                description: "Website restoran modern dengan tema dark monokrom yang elegan, dibangun menggunakan HTML, CSS, dan JavaScript murni tanpa framework. Menampilkan landing page dengan fitur unggulan, menu dinamis, detail menu dengan bahasa/harga dan instruksi, autentikasi login/register, dan keranjang belanja dengan kembali/kurang/hapus item.",
+                tech: ["HTML", "CSS", "JavaScript", "Responsive Design", "Local Storage"],
+                demo: ".PROJECT/Web Projects/RestoranModern/Restoran.mp4",
+                code: "https://github.com/HilmiKhaidarN/RestoranModern",
+                hasVideo: true
+            },
         ]
     },
     mobile: {
@@ -1461,6 +1462,8 @@ function openVideoModal(videoPath, projectTitle) {
         videoDescription.textContent = 'Demo aplikasi PangkasHub - sistem booking barbershop modern';
     } else if (projectTitle.includes('Perpustakaan')) {
         videoDescription.textContent = 'Demo aplikasi Perpustakaan Digital - sistem manajemen perpustakaan modern';
+    } else if (projectTitle.includes('Restoran')) {
+        videoDescription.textContent = 'Demo website Restoran Modern dengan tema dark monokrom dan fitur e-commerce';
     } else {
         videoDescription.textContent = `Demo aplikasi ${projectTitle}`;
     }
